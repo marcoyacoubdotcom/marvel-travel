@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marvel Travel — Premium Egypt Experiences</title>
+<link rel="icon" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#c69c4a; --gold-l:#e2be6e; --gold-d:#9a7638;
+  --cream:#f5f1e9; --ink:#101622; --ink2:#1a2233;
+  --paper:#faf7f0; --line:rgba(198,156,74,.25);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Montserrat',sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+.serif{font-family:'Playfair Display',serif}
+.cinzel{font-family:'Cinzel',serif}
+.gold{color:var(--gold)}
+.eyebrow{font-family:'Montserrat';font-weight:600;font-size:13px;letter-spacing:.35em;text-transform:uppercase;color:var(--gold-d)}
+.section{padding:110px 0}
+.center{text-align:center}
+
+/* ---------- NAV ---------- */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;transition:.4s;padding:22px 0}
+nav.scrolled{background:rgba(16,22,34,.92);backdrop-filter:blur(14px);padding:14px 0;box-shadow:0 4px 30px rgba(0,0,0,.25)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:12px}
+.logo img{height:44px;width:auto}
+.logo span{font-family:'Cinzel';font-weight:700;font-size:20px;letter-spacing:.12em;color:var(--cream)}
+nav.scrolled .logo span{color:var(--cream)}
+.nav-links{display:flex;gap:36px;align-items:center}
+.nav-links a{font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--cream);opacity:.85;transition:.3s}
+.nav-links a:hover{opacity:1;color:var(--gold-l)}
+.nav-cta{background:var(--gold);color:var(--ink)!important;padding:11px 26px;border-radius:40px;opacity:1!important;font-weight:700}
+.nav-cta:hover{background:var(--gold-l);transform:translateY(-1px)}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer}
+.burger span{width:26px;height:2px;background:var(--cream)}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;color:var(--cream);overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:-2}
+.hero-bg img{width:100%;height:100%;object-fit:cover}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(16,22,34,.55),rgba(16,22,34,.35) 40%,rgba(16,22,34,.92))}
+.hero-content{max-width:880px;padding:120px 24px 80px}
+.hero .eyebrow{color:var(--gold-l)}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(48px,7vw,86px);font-weight:700;line-height:1.05;margin:22px 0 8px;letter-spacing:-.01em}
+.hero h1 em{font-style:italic;color:var(--gold-l)}
+.hero p{font-size:clamp(16px,2vw,20px);font-weight:300;max-width:620px;margin:26px auto 40px;opacity:.92}
+.btn{display:inline-block;font-weight:700;font-size:14px;letter-spacing:.16em;text-transform:uppercase;padding:18px 44px;border-radius:44px;transition:.3s;cursor:pointer;border:none}
+.btn-gold{background:var(--gold);color:var(--ink)}
+.btn-gold:hover{background:var(--gold-l);transform:translateY(-2px);box-shadow:0 14px 40px rgba(198,156,74,.35)}
+.btn-outline{background:transparent;color:var(--cream);border:1.5px solid rgba(245,241,233,.5);margin-left:14px}
+.btn-outline:hover{border-color:var(--gold-l);color:var(--gold-l)}
+.scroll-hint{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);color:var(--cream);opacity:.6;font-size:12px;letter-spacing:.3em;animation:bob 2s infinite}
+@keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,8px)}}
+
+/* ---------- STATS ---------- */
+.stats{background:var(--ink);color:var(--cream);padding:56px 0}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
+.stat .num{font-family:'Cinzel';font-weight:700;font-size:44px;color:var(--gold-l)}
+.stat .lbl{font-size:12px;letter-spacing:.2em;text-transform:uppercase;opacity:.6;margin-top:6px}
+
+/* ---------- ABOUT ---------- */
+.about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:70px;align-items:center}
+.about h2{font-family:'Playfair Display',serif;font-size:clamp(34px,4.5vw,52px);font-weight:700;line-height:1.12;margin:18px 0 24px}
+.about h2 em{font-style:italic;color:var(--gold-d)}
+.about p{color:#4a5163;font-size:17px;font-weight:400;margin-bottom:18px}
+.about-img{position:relative;border-radius:6px;overflow:hidden;box-shadow:0 30px 80px rgba(16,22,34,.25)}
+.about-img img{height:520px;object-fit:cover;width:100%}
+.about-img::after{content:'';position:absolute;inset:14px;border:1px solid rgba(245,241,233,.35);pointer-events:none}
+.signature{font-family:'Playfair Display';font-style:italic;font-size:26px;color:var(--gold-d);margin-top:10px}
+
+/* ---------- TOURS ---------- */
+.tours{background:var(--cream)}
+.tours-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:54px;flex-wrap:wrap;gap:20px}
+.tours-head h2{font-family:'Playfair Display',serif;font-size:clamp(34px,4.5vw,50px);font-weight:700;margin-top:14px}
+.tour-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+.tour{background:#fff;border-radius:6px;overflow:hidden;box-shadow:0 10px 40px rgba(16,22,34,.08);transition:.35s;display:flex;flex-direction:column}
+.tour:hover{transform:translateY(-8px);box-shadow:0 24px 60px rgba(16,22,34,.16)}
+.tour-img{height:250px;overflow:hidden;position:relative}
+.tour-img img{width:100%;height:100%;object-fit:cover;transition:.6s}
+.tour:hover .tour-img img{transform:scale(1.07)}
+.tour-tag{position:absolute;top:16px;left:16px;background:var(--gold);color:var(--ink);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:7px 14px;border-radius:30px}
+.tour-body{padding:26px;display:flex;flex-direction:column;flex:1}
+.tour-body h3{font-family:'Cinzel';font-weight:700;font-size:22px;margin-bottom:4px}
+.tour-sub{font-size:13px;color:#8a8f9c;letter-spacing:.04em;margin-bottom:16px}
+.tour-meta{display:flex;gap:16px;font-size:13px;color:#5a6070;margin-bottom:18px}
+.tour-meta span{display:flex;align-items:center;gap:6px}
+.tour-foot{margin-top:auto;display:flex;justify-content:space-between;align-items:center;padding-top:16px;border-top:1px solid #eee}
+.price{font-family:'Cinzel';font-weight:700;font-size:26px;color:var(--ink)}
+.price small{font-family:'Montserrat';font-size:12px;font-weight:500;color:#8a8f9c}
+.tour-btn{font-size:13px;font-weight:700;letter-spacing:.1em;color:var(--gold-d);text-transform:uppercase;transition:.3s}
+.tour-btn:hover{color:var(--ink)}
+
+/* ---------- WHY ---------- */
+.why{background:var(--ink);color:var(--cream)}
+.why h2{font-family:'Playfair Display',serif;font-size:clamp(34px,4.5vw,50px);font-weight:700;text-align:center;margin:14px 0 60px}
+.why h2 em{font-style:italic;color:var(--gold-l)}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.why-card{padding:38px 30px;border:1px solid rgba(198,156,74,.28);border-radius:6px;transition:.3s;background:rgba(255,255,255,.02)}
+.why-card:hover{border-color:var(--gold);background:rgba(198,156,74,.06);transform:translateY(-4px)}
+.why-ico{font-size:34px;margin-bottom:18px}
+.why-card h3{font-family:'Cinzel';font-weight:700;font-size:20px;color:var(--gold-l);margin-bottom:12px}
+.why-card p{font-size:15px;font-weight:300;opacity:.8}
+
+/* ---------- TESTIMONIALS ---------- */
+.testi{background:var(--cream)}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:54px}
+.testi-card{background:#fff;padding:36px 30px;border-radius:6px;box-shadow:0 8px 30px rgba(16,22,34,.06);position:relative}
+.testi-card::before{content:'\201C';font-family:'Playfair Display';font-size:80px;color:var(--gold);opacity:.25;position:absolute;top:8px;left:22px;line-height:1}
+.testi-card p{font-family:'Playfair Display';font-style:italic;font-size:17px;color:#3a4152;margin:18px 0 20px;position:relative;z-index:1}
+.testi-who{display:flex;align-items:center;gap:12px}
+.testi-av{width:44px;height:44px;border-radius:50%;background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-family:'Cinzel'}
+.testi-who strong{display:block;font-size:14px}
+.testi-who span{font-size:12px;color:#8a8f9c}
+.stars{color:var(--gold);letter-spacing:2px;font-size:14px}
+
+/* ---------- CTA BANNER ---------- */
+.cta-band{position:relative;padding:130px 0;text-align:center;color:var(--cream);overflow:hidden}
+.cta-band .bg{position:absolute;inset:0;z-index:-2}
+.cta-band .bg img{width:100%;height:100%;object-fit:cover}
+.cta-band::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(16,22,34,.82),rgba(16,22,34,.9));z-index:-1}
+.cta-band h2{font-family:'Playfair Display',serif;font-size:clamp(34px,5vw,56px);font-weight:700;margin-bottom:16px}
+.cta-band h2 em{font-style:italic;color:var(--gold-l)}
+.cta-band p{font-size:18px;font-weight:300;opacity:.9;max-width:560px;margin:0 auto 40px}
+
+/* ---------- CONTACT ---------- */
+.contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:70px}
+.contact h2{font-family:'Playfair Display',serif;font-size:clamp(32px,4vw,46px);font-weight:700;margin:14px 0 20px}
+.contact-info{margin-top:34px}
+.ci{display:flex;gap:16px;align-items:center;margin-bottom:22px}
+.ci-ico{width:48px;height:48px;border-radius:50%;background:var(--ink);color:var(--gold-l);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.ci strong{display:block;font-size:15px}
+.ci span{font-size:14px;color:#6a7183}
+form{background:#fff;padding:44px;border-radius:6px;box-shadow:0 20px 60px rgba(16,22,34,.1)}
+.field{margin-bottom:20px}
+.field label{display:block;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#5a6070;margin-bottom:8px}
+.field input,.field select,.field textarea{width:100%;padding:14px 16px;border:1.5px solid #e4e0d6;border-radius:4px;font-family:'Montserrat';font-size:15px;background:var(--paper);transition:.3s;color:var(--ink)}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--gold);background:#fff}
+.field textarea{min-height:120px;resize:vertical}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+form .btn{width:100%;margin-top:6px}
+
+/* ---------- FOOTER ---------- */
+footer{background:var(--ink);color:var(--cream);padding:70px 0 30px}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.4fr;gap:40px;margin-bottom:50px}
+.foot-brand img{height:52px;margin-bottom:18px}
+.foot-brand p{font-size:14px;font-weight:300;opacity:.65;max-width:280px}
+footer h4{font-family:'Cinzel';font-size:15px;letter-spacing:.1em;color:var(--gold-l);margin-bottom:18px}
+.foot-links a{display:block;font-size:14px;opacity:.65;margin-bottom:10px;transition:.3s}
+.foot-links a:hover{opacity:1;color:var(--gold-l)}
+.socials{display:flex;gap:12px;margin-top:6px}
+.socials a{width:42px;height:42px;border-radius:50%;border:1px solid rgba(198,156,74,.4);display:flex;align-items:center;justify-content:center;transition:.3s;font-size:16px}
+.socials a:hover{background:var(--gold);color:var(--ink);border-color:var(--gold)}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:26px;display:flex;justify-content:space-between;font-size:13px;opacity:.5;flex-wrap:wrap;gap:10px}
+
+/* ---------- REVEAL ---------- */
+.rv{opacity:0;transform:translateY(34px);transition:.8s cubic-bezier(.2,.7,.3,1)}
+.rv.in{opacity:1;transform:none}
+
+/* ---------- RESPONSIVE ---------- */
+@media(max-width:900px){
+  .nav-links{display:none}.burger{display:flex}
+  .about-grid,.contact-grid{grid-template-columns:1fr}
+  .tour-grid,.why-grid,.testi-grid{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:repeat(2,1fr);gap:34px}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  .form-row{grid-template-columns:1fr}
+  .section{padding:70px 0}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="wrap">
+    <a class="logo" href="#"><img src="assets/logo.png" alt="Marvel Travel"><span>MARVEL TRAVEL</span></a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#tours">Tours</a>
+      <a href="#why">Why Us</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact" class="nav-cta">Plan Your Trip</a>
+    </div>
+    <div class="burger"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-bg"><img src="assets/pyramids.jpg" alt="Pyramids of Giza"></div>
+  <div class="hero-content">
+    <div class="eyebrow">Premium Egypt Experiences</div>
+    <h1>Discover Egypt<br><em>beyond the ordinary</em></h1>
+    <p>Curated private journeys through the land of pharaohs — from the Nile's golden sunsets to Siwa's silent sands. Travel deeply, travel marvelously.</p>
+    <a href="#tours" class="btn btn-gold">Explore Journeys</a>
+    <a href="#contact" class="btn btn-outline">Talk to Us</a>
+  </div>
+  <div class="scroll-hint">SCROLL</div>
+</header>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="wrap stats-grid">
+    <div class="stat"><div class="num" data-count="1200">0</div><div class="lbl">Happy Travelers</div></div>
+    <div class="stat"><div class="num" data-count="48">0</div><div class="lbl">Curated Tours</div></div>
+    <div class="stat"><div class="num" data-count="12">0</div><div class="lbl">Years Experience</div></div>
+    <div class="stat"><div class="num" data-count="98">0</div><div class="lbl">% Would Return</div></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section about" id="about">
+  <div class="wrap about-grid">
+    <div class="rv">
+      <div class="eyebrow">Our Story</div>
+      <h2>We don't sell trips.<br>We craft <em>unforgettable</em> Egypt.</h2>
+      <p>Marvel Travel was born from a simple belief: Egypt deserves to be experienced, not just visited. No rushed buses, no cookie-cutter itineraries — just thoughtfully designed journeys led by people who truly love this land.</p>
+      <p>Every route we build is walked by our own team first. Every hotel, every guide, every hidden café along the way — chosen because we'd send our own family there. That's the Marvel difference.</p>
+      <div class="signature">— The Marvel Travel Team</div>
+    </div>
+    <div class="about-img rv"><img src="assets/karnak.jpg" alt="Karnak Temple, Luxor"></div>
+  </div>
+</section>
+
+<!-- TOURS -->
+<section class="section tours" id="tours">
+  <div class="wrap">
+    <div class="tours-head rv">
+      <div>
+        <div class="eyebrow">Signature Journeys</div>
+        <h2>Handpicked Egyptian adventures</h2>
+      </div>
+      <a href="#contact" class="tour-btn">View all journeys →</a>
+    </div>
+    <div class="tour-grid">
+      <div class="tour rv">
+        <div class="tour-img"><img src="assets/pyramids.jpg" alt="Pyramids"><span class="tour-tag">Best Seller</span></div>
+        <div class="tour-body">
+          <h3>Classic Egypt</h3>
+          <div class="tour-sub">Cairo · Luxor · Aswan</div>
+          <div class="tour-meta"><span>🗓 7 nights</span><span>👥 Private</span></div>
+          <p style="font-size:14px;color:#5a6070;margin-bottom:16px">The essential Egypt — pyramids, the Nile, and the Valley of the Kings, at your own pace.</p>
+          <div class="tour-foot"><div class="price">$899 <small>/ person</small></div><a href="#contact" class="tour-btn">Book →</a></div>
+        </div>
+      </div>
+      <div class="tour rv">
+        <div class="tour-img"><img src="assets/abusimbel.jpg" alt="Abu Simbel"><span class="tour-tag">Winter</span></div>
+        <div class="tour-body">
+          <h3>Nile & Abu Simbel</h3>
+          <div class="tour-sub">Luxor · Aswan · Abu Simbel</div>
+          <div class="tour-meta"><span>🗓 5 nights</span><span>🚢 Cruise</span></div>
+          <p style="font-size:14px;color:#5a6070;margin-bottom:16px">Sail the Nile and stand before Ramses' colossal temples in golden afternoon light.</p>
+          <div class="tour-foot"><div class="price">$1,290 <small>/ couple</small></div><a href="#contact" class="tour-btn">Book →</a></div>
+        </div>
+      </div>
+      <div class="tour rv">
+        <div class="tour-img"><img src="assets/sphinx.jpg" alt="Sphinx"><span class="tour-tag">Adventure</span></div>
+        <div class="tour-body">
+          <h3>Desert & Oasis</h3>
+          <div class="tour-sub">Siwa · Cairo · White Desert</div>
+          <div class="tour-meta"><span>🗓 4 nights</span><span>🏜 4x4</span></div>
+          <p style="font-size:14px;color:#5a6070;margin-bottom:16px">Salt lakes, hot springs, and stars above the White Desert — Egypt's wild soul.</p>
+          <div class="tour-foot"><div class="price">$549 <small>/ person</small></div><a href="#contact" class="tour-btn">Book →</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="section why" id="why">
+  <div class="wrap">
+    <div class="center rv">
+      <div class="eyebrow" style="color:var(--gold-l)">Why Marvel</div>
+      <h2>The difference is in the <em>details</em></h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card rv"><div class="why-ico">🗺️</div><h3>Locally Crafted</h3><p>Every itinerary is designed by Egypt-based travel people who know the back streets, the best seasons, and the honest prices.</p></div>
+      <div class="why-card rv"><div class="why-ico">💬</div><h3>Real Human Support</h3><p>Message us and a real person replies — before, during, and after your trip. No bots, no runaround.</p></div>
+      <div class="why-card rv"><div class="why-ico">💎</div><h3>Handpicked Stays</h3><p>We stay in every hotel we recommend. Boutique riads, Nile-view suites, desert eco-lodges — chosen with care.</p></div>
+      <div class="why-card rv"><div class="why-ico">🧭</div><h3>Private & Flexible</h3><p>Your trip, your pace. Fully private tours with itineraries that bend to what you want to see.</p></div>
+      <div class="why-card rv"><div class="why-ico">🤝</div><h3>Fair & Transparent</h3><p>Clear pricing, no hidden fees, honest advice — even when it means a cheaper option for you.</p></div>
+      <div class="why-card rv"><div class="why-ico">⭐</div><h3>Memories, Not Tours</h3><p>Sunrise balloons, felucca sunsets, Nubian dinners — the moments you'll actually remember.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section testi" id="reviews">
+  <div class="wrap center">
+    <div class="rv">
+      <div class="eyebrow">Traveler Stories</div>
+      <h2 class="serif" style="font-size:clamp(34px,4.5vw,50px);font-weight:700;margin-top:14px">Loved by our travelers</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card rv">
+        <div class="stars">★★★★★</div>
+        <p>Marvel planned our honeymoon in Egypt and it was pure magic. The Nile cruise, the guides, every detail. We felt looked after the entire time.</p>
+        <div class="testi-who"><div class="testi-av">S</div><div><strong>Sarah &amp; Omar</strong><span>Cairo &amp; Nile Cruise</span></div></div>
+      </div>
+      <div class="testi-card rv">
+        <div class="stars">★★★★★</div>
+        <p>I've traveled a lot, but the Siwa trip was something else. Marvel found places I never would have. Genuinely the best travel decision I've made.</p>
+        <div class="testi-who"><div class="testi-av">M</div><div><strong>Mariam K.</strong><span>Siwa Oasis Retreat</span></div></div>
+      </div>
+      <div class="testi-card rv">
+        <div class="stars">★★★★★</div>
+        <p>Quick replies, honest advice, and they talked me out of a more expensive option because it didn't fit. That earned my trust — and my next booking.</p>
+        <div class="testi-who"><div class="testi-av">A</div><div><strong>Ahmed T.</strong><span>Luxor Weekend</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-band">
+  <div class="bg"><img src="assets/luxor.jpg" alt="Luxor at night"></div>
+  <div class="wrap rv">
+    <h2>Your Egypt is <em>waiting</em></h2>
+    <p>Tell us your dream trip and we'll design it around you — free consultation, no obligation.</p>
+    <a href="#contact" class="btn btn-gold">Start Planning</a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section contact" id="contact">
+  <div class="wrap contact-grid">
+    <div class="rv">
+      <div class="eyebrow">Get in Touch</div>
+      <h2>Let's plan something <em style="color:var(--gold-d)">marvelous</em></h2>
+      <p style="color:#4a5163;font-size:17px">Whether it's a romantic escape, a family adventure, or a photography journey — share your vision and we'll make it real.</p>
+      <div class="contact-info">
+        <div class="ci"><div class="ci-ico">✆</div><div><strong>+20 XXX XXX XXXX</strong><span>WhatsApp &amp; calls</span></div></div>
+        <div class="ci"><div class="ci-ico">✉</div><div><strong>hello@marveltravell.com</strong><span>We reply within a day</span></div></div>
+        <div class="ci"><div class="ci-ico">📍</div><div><strong>Cairo, Egypt</strong><span>Serving travelers worldwide</span></div></div>
+        <div class="ci"><div class="ci-ico">📸</div><div><strong>@marveltravellEGY</strong><span>Follow our journeys</span></div></div>
+      </div>
+    </div>
+    <form class="rv" onsubmit="event.preventDefault();this.querySelector('.btn').textContent='Thank you! We\\'ll be in touch ✦';this.querySelector('.btn').style.background='#2e7d4f';">
+      <div class="form-row">
+        <div class="field"><label>Full Name</label><input type="text" required placeholder="Your name"></div>
+        <div class="field"><label>Email</label><input type="email" required placeholder="you@email.com"></div>
+      </div>
+      <div class="form-row">
+        <div class="field"><label>Phone / WhatsApp</label><input type="tel" placeholder="+20 ..."></div>
+        <div class="field"><label>Interested In</label>
+          <select>
+            <option>Classic Egypt (7 nights)</option>
+            <option>Nile &amp; Abu Simbel</option>
+            <option>Desert &amp; Oasis</option>
+            <option>Custom / Honeymoon</option>
+            <option>Something else</option>
+          </select>
+        </div>
+      </div>
+      <div class="field"><label>Tell us about your dream trip</label><textarea placeholder="Dates, number of travelers, what you'd love to see..."></textarea></div>
+      <button type="submit" class="btn btn-gold">Send Inquiry</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <img src="assets/logo.png" alt="Marvel Travel">
+        <p>Premium, locally-crafted travel experiences across Egypt. Travel deeply, travel marvelously.</p>
+      </div>
+      <div class="foot-links"><h4>Explore</h4><a href="#about">About</a><a href="#tours">Tours</a><a href="#why">Why Us</a><a href="#reviews">Reviews</a></div>
+      <div class="foot-links"><h4>Support</h4><a href="#contact">Contact</a><a href="#tours">Book a Trip</a><a href="#">FAQ</a><a href="#">Privacy</a></div>
+      <div>
+        <h4>Follow the Journey</h4>
+        <div class="socials">
+          <a href="https://www.instagram.com/marveltravellEGY/" title="Instagram">◉</a>
+          <a href="#" title="Facebook">f</a>
+          <a href="#" title="TikTok">♪</a>
+          <a href="https://wa.me/" title="WhatsApp">✆</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Marvel Travel. All rights reserved.</span>
+      <span>Crafted with care in Cairo 🇪🇬</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// nav scroll state
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40));
+// scroll reveal
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+// stat counters
+const cio=new IntersectionObserver(es=>es.forEach(e=>{
+  if(!e.isIntersecting)return; cio.unobserve(e.target);
+  const el=e.target,end=+el.dataset.count;let cur=0;
+  const step=Math.max(1,Math.floor(end/60));
+  const t=setInterval(()=>{cur+=step;if(cur>=end){cur=end;clearInterval(t)}el.textContent=cur.toLocaleString()+(end>=98?'':'+');if(end>=98)el.textContent=end+'%';},20);
+}),{threshold:.5});
+document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
+</script>
+</body>
+</html>
